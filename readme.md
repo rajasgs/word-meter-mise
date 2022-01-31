@@ -10,9 +10,25 @@ If the DB doesn't have the meter stored, Spring BE will call the Flask ML for th
 Once the Spring BE gets the meter for the new value, it will store the meter in the DB.
 ```
 
+
 Folder Structure
 ```
 word-meter-mise
-    
+    deployment
+    backend
+    mlmeter
+```
+
+
+Setup Network
+```
+sudo docker network create wordmeter_network
+
+# verify the docker network
+sudo docker network ls | grep wordmeter_network
+
+cd deployment
+
+sudo docker-compose up --build
 
 ```

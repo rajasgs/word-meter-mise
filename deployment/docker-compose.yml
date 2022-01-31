@@ -1,0 +1,24 @@
+version: '3.3'
+
+networks:
+  wordmeter_network:
+    external:
+      name: wordmeter_network
+
+services:
+
+  # Backend
+  tactbee_be:
+    container_name: tactbee_api_service
+    build:
+      context: ../backend
+    ports:
+      - "${WMETER_BACKEND_PORT}:${WMETER_BACKEND_PORT}"
+    volumes:
+      - ../backend:/app
+    environment:
+      WMETER_BACKEND_PORT: ${WMETER_BACKEND_PORT}
+    networks:
+      - wordmeter_network
+
+
